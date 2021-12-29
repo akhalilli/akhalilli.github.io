@@ -7,7 +7,7 @@ image: "https://www.mathworks.com/matlabcentral/mlc-downloads/downloads/submissi
 tags: [numerical, methods, analysis]
 ---
 
-# Numerical Methods [intro]
+# Numerical Methods - need [s1:c1]
 
 Have you ever wondered how computer software determines the square root of a given value?
 
