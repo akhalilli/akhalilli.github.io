@@ -1,13 +1,13 @@
 ---
 layout: post
-title: Numerical Methods [intro]
+title: Numerical Methods - need [se1:ch1]
 description: Numerical Analysis & Methods Introduction
 date: 2021-12-01 15:01:35 +0400
 image: "https://www.mathworks.com/matlabcentral/mlc-downloads/downloads/submissions/37976/versions/7/screenshot.png"
 tags: [numerical, methods, analysis]
 ---
 
-# Numerical Methods - need [s1:c1]
+# Numerical Methods - need [se1:ch1]
 
 Have you ever wondered how computer software determines the square root of a given value?
 
