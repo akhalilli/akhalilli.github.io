@@ -3,7 +3,7 @@ layout: post
 title: Bisection Method [se1:ch2]
 description: Bisection Method introduction
 date: 2021-12-10 19:30:53 +0400
-image: "https://www.mathworks.com/matlabcentral/mlc-downloads/downloads/submissions/37976/versions/7/screenshot.png"
+image: "../images/bisection_1.png"
 tags: [numerical, methods, analysis, bisection]
 ---
 

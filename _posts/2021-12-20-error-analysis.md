@@ -3,7 +3,7 @@ layout: post
 title: Approximation - Error Analysis [se1:ch3]
 description: Error Analysis of Bisection method
 date: 2021-12-20 18:01:00 +0400
-image: "https://www.mathworks.com/matlabcentral/mlc-downloads/downloads/submissions/37976/versions/7/screenshot.png"
+image: "../images/error_analysis/error_1.png"
 tags: [numerical, methods, error, analysis]
 ---
 
