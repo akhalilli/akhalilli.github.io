@@ -16,7 +16,6 @@ While solving a mathematical model using numerical approaches, we can use errors
 3. minimize the error in accordance with our requirements.
 
 Here, we'll focus on item 2, i.e., how to measure mistakes.
-
 What is a TRUE Error in this context? TRUE error, represented by E, is defined as the difference between the true value (also known as the precise value) and the estimated value.
 
 > True Error = True Value - Approximate Value
@@ -33,9 +32,9 @@ What is approximate error? True errors are calculated only if true values are kn
 > Approximate Error = Current Approximation - Previous Approximation
 > 
 
-> Relative Approximate Error = Approximate Error / Current Approximation
-> 
-
 <p align="center">
 <img align="center" src="../images/bisectch2/root_finding.png" alt="bisection root finding">
 </p>
+
+> Relative Approximate Error = Approximate Error / Current Approximation
+> 
