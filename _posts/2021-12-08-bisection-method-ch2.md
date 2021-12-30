@@ -120,4 +120,12 @@ the interval.
 2. If one of the initial guesses is closer to the root, it will take a larger number of
 iterations to reach the root.
 
+
+
+<p align="center">
+<img align="center" src="../images/bisectch2/root_finding.png" alt="root finding">
+</p>
+
+
+
 In the next chapter, we will discuss error analysis.
