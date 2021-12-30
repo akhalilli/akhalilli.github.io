@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Numerical Methods - need [se1:ch1]
-description: Numerical Analysis & Methods Introduction
-date: 2021-12-01 15:01:35 +0400
+title: Approximation - Error Analysis [se1:ch3]
+description: Error Analysis of Bisection method
+date: 2021-12-20 18:01:00 +0400
 image: "https://www.mathworks.com/matlabcentral/mlc-downloads/downloads/submissions/37976/versions/7/screenshot.png"
 tags: [numerical, methods, analysis]
 ---
@@ -15,7 +15,6 @@ Have you ever wondered how computer software determines the square root of a giv
 
 Doing the math on paper is different from CPU. By design, computers solve problems iteratively. Innate methods must be adapted in order to deal with such a situation.
 This article's primary goal is to foster intuition:
-
 1. Understand the requirement for numerical methods
 2. Go through the processes of solving a specific problem (mathematical modeling, solution, and implementation).
 
@@ -42,3 +41,4 @@ As an engineer or scientist, you will employ numerical methods to address an iss
 Depending on how you solve the mathematical model, you may utilize analytical methods, numerical methods, or even a package program to accomplish your goal. When students or others think they've finished with a mathematical model, they often mistakenly believe that they've completed their work; this isn't the case for your employer or anybody else. Instead of merely searching for a mathematical answer, they want to know how you plan to put that solution into action so that the problem may be resolved.
 
 For the next chapter, we are diving into the Bisection Analysis & Newton-Raphson Method.
+
