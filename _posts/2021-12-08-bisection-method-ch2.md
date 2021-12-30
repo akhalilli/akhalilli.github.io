@@ -2,7 +2,7 @@
 layout: post
 title: Bisection Method [se1:ch2]
 description: Bisection Method introduction
-date: 2021-12-10 19:30:53 +0400
+date: 2021-12-08 19:30:53 +0400
 image: "../images/bisection_1.png"
 tags: [numerical, methods, analysis, bisection]
 ---

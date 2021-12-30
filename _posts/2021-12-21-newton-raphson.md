@@ -9,36 +9,82 @@ tags: [numerical, methods, analysis, newton-raphson]
 
 # Newton Raphson approach [se1:ch4]
 
-Have you ever wondered how computer software determines the square root of a given value?
+Using the square-root finding technique as an example, this chapter will examine the Newton-Raphson approach in further detail. The in-depth examination and distinctions between **Gradient Descent** and **Newton-Raphson** will be the subject of a future season.
 
-> "Computational thinking vs. Human thinking" is the equivalent of this question.
+The Newton-Raphson technique is another numerical method for determining the square root. The root of a nonlinear equation must be bracketed by two estimations using methods like the bisection technique and the false position method. Bracketing approaches are used to accomplish this. Because they reduce the interval between the two estimations in order to zero in on the equation's root, these approaches are always convergent.
+The root is not bracketed in the Newton-Raphson approach. When it comes to solving an equation, just one initial guess of the root is required to get the iterative process started.
+As a result, it might be considered an open approach. Open approaches may or may not converge, but if they do, it will be substantially faster than with bracketing.
 
-Doing the math on paper is different from CPU. By design, computers solve problems iteratively. Innate methods must be adapted in order to deal with such a situation.
-This article's primary goal is to foster intuition:
-1. Understand the requirement for numerical methods
-2. Go through the processes of solving a specific problem (mathematical modeling, solution, and implementation).
+**Derivation**:
 
-<p align="center">
-<img align="center" src="../images/numerical1.png" alt="numerical analysis">
-</p>
+In general, the Newton-Raphson technique is founded on the idea that if the original estimation for the root of f(x)=0 is at xi, then drawing the tangent to the curve at f(xi) will result in a better estimate of the root, as will drawing the tangent to the curve at f(xi).
 
-Solving engineering challenges necessitates the use of mathematical models. These mathematical models might be generated from actual data or from concepts found in engineering and science. A wide variety of mathematical methods, such as differentiation, nonlinear equations, simultaneous linear equations, curve fitting by interpolation or regression, integration, and differential equations are frequently required when building mathematical models. Some of these mathematical operations can be solved precisely, as you probably learned to do in your calculus studies, but for the most part, they must be approximated numerically. Approximate answers to mathematical problems are provided by numerical methods. These issues might arise in any engineering discipline. As a result, any answer you acquire using these methods will be approximate rather than accurate. However, they provide the solution more quickly than standard approaches and are also simple to program.
-
-**The main applications of numerical methods are:**
-
-- Adaptive computation (we will discuss this topic separately)
-- Solving linear and nonlinear equations and determining the true roots. There are several ways available, such as bisection, Newton-Raphson, and so on.
-- Any value in the range of a table of values may be obtained by using interpolation. It is capable of resolving readings with equal spacing, and Newton's general technique is inferred for ways with uneven spacing.
-- A good estimate and a simple approach are to fit certain points to a curve.
-- On the basis of the assumption that integration can be computed using a simple procedure, the definite integral is the area enclosed by the given curve. These approaches are quite good at estimating the area. There are a variety of techniques, such as Simpson's rule.
-- Solving partial differential equations.
-
-As an engineer or scientist, you will employ numerical methods to address an issue. Let's have a look at an example of this in action. As a starting point, let's take a look at the stages that go into fixing an engineering issue. In order to begin, you must first identify the problem. Defining the problem is the first step in solving it since if you don't know-how, you won't be able to. You need to write a detailed explanation of the issue you're dealing with, including what it is and what we're searching for before you can begin working on it. After that, you may create a mathematical model of it, however, others would say that an experimental model is required. That is perfectly OK. Whatever strategy you use for solving the problem will determine whether you construct a mathematical model or an experimental model. Even an experimental model must require a mathematical model at some point if the problem is to be solved or presented in an understandable manner. Using our numerical methodologies, we will limit the applicability after we've established a mathematical model. If you wish to find a solution, you'll need to work out a mathematical model.
+Using the definition of the slope(tangent) of a function, at x=xi.
 
 <p align="center">
-<img width="450" height="450" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Bisection_method.svg/1200px-Bisection_method.svg.png" alt="bisection method">
+<img align="center" src="../images/newton_raphson_1.png" alt="numerical analysis">
 </p>
-Depending on how you solve the mathematical model, you may utilize analytical methods, numerical methods, or even a package program to accomplish your goal. When students or others think they've finished with a mathematical model, they often mistakenly believe that they've completed their work; this isn't the case for your employer or anybody else. Instead of merely searching for a mathematical answer, they want to know how you plan to put that solution into action so that the problem may be resolved.
 
-For the next chapter, we are diving into the Bisection Analysis & Newton-Raphson Method.
+**Algorithm for this method:**
 
+1. Compute values of f(x) and f’(x) for given initial x, f’(x) is derivative of f(x) as per x
+2. Compute d: d = f(x) / f’(x)
+3. While d is greater than allowed error ε [iterate till the convergence]
+    1. d = f(x) / f’(x)
+    2. x = x – d
+
+Implementation:
+```cpp
+// C++ program for implementation of Newton Raphson Method for
+// solving equations
+#include<bits/stdc++.h>
+#define EPSILON 0.001 // Tolerance error
+using namespace std;
+ 
+// An example function whose solution is determined using
+// Bisection Method. The function is x^3 - x^2  + 2
+double func(double x)
+{
+    return x*x*x - x*x + 2;
+}
+ 
+// Derivative of the above function which is 3*x^x - 2*x
+double derivFunc(double x)
+{
+    return 3*x*x - 2*x;
+}
+ 
+// Function to find the root
+void newtonRaphson(double x)
+{
+    double h = func(x) / derivFunc(x);
+    while (abs(h) >= EPSILON)
+    {
+        h = func(x)/derivFunc(x);
+  
+        // x(i+1) = x(i) - f(x) / f'(x)  
+        x = x - h;
+    }
+ 
+    cout << "The value of the root is : " << x;
+}
+ 
+// Driver program to test above
+int main()
+{
+    double x0 = -20; // Initial values assumed
+    newtonRaphson(x0);
+    return 0;
+}
+```
+
+**Pros**:
+1. It is the most efficient approach to solving nonlinear equations.
+2. In addition, it may be used to solve a system of nonlinear equations, nonlinear differential equations, and nonlinear integral equations, among others.
+3. As a result, this approach is relatively quick when compared to other methods due to the quadric order of convergence (i.e., of second-order).
+4. It is really straightforward to implement on a computer.
+
+**Cons**:
+1. If the derivative of the function f(x) is not a simple function, then this procedure gets difficult.
+2. This approach necessitates a considerable deal of care and sensitivity in the selection of its approximation parameters.
+3. We must assess two values f(x) and f'(x) for some x in each iteration of the algorithm.
