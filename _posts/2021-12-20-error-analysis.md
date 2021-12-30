@@ -4,10 +4,10 @@ title: Approximation - Error Analysis [se1:ch3]
 description: Error Analysis of Bisection method
 date: 2021-12-20 18:01:00 +0400
 image: "https://www.mathworks.com/matlabcentral/mlc-downloads/downloads/submissions/37976/versions/7/screenshot.png"
-tags: [numerical, methods, analysis]
+tags: [numerical, methods, error, analysis]
 ---
 
-# Numerical Methods - need [se1:ch1]
+# Approximation - Error Analysis [se1:ch3]
 
 Have you ever wondered how computer software determines the square root of a given value?
 

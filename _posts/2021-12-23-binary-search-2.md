@@ -1,13 +1,13 @@
 ---
 layout: post
-title: Newton-Raphson approach [se1:ch4]
-description: Newton-Raphson approach
-date: 2021-12-21 18:01:00 +0400
-image: "https://i.stack.imgur.com/iILOK.png"
-tags: [numerical, methods, analysis, newton-raphson]
+title: Binary Search - survival guide [se1:ch6]
+description: Binary Search - [se1:ch6]
+date: 2021-12-22 18:01:00 +0400
+image: "../images/binary_search/binary_search_2.png"
+tags: [binary, search, binary-search]
 ---
 
-# Newton Raphson approach [se1:ch4]
+# Binary Search - survival guide [se1:ch6]
 
 Have you ever wondered how computer software determines the square root of a given value?
 

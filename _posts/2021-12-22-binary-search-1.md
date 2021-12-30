@@ -4,10 +4,10 @@ title: Binary Search - survival guide [se1:ch5]
 description: Binary Search - [se1:ch5]
 date: 2021-12-22 18:01:00 +0400
 image: "../images/binary_search/binary_search_1.png"
-tags: [numerical, methods, analysis]
+tags: [binary, search, binary-search]
 ---
 
-# Numerical Methods - need [se1:ch1]
+# Binary Search - survival guide [se1:ch5]
 
 Have you ever wondered how computer software determines the square root of a given value?
 
