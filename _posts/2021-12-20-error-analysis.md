@@ -37,5 +37,5 @@ What is approximate error? True errors are calculated only if true values are kn
 > 
 
 <p align="center">
-<img align="center" src="../images/bisectch2/bisection_main.png" alt="bisection root finding">
+<img align="center" src="../images/bisectch2/root_finding.png" alt="bisection root finding">
 </p>
