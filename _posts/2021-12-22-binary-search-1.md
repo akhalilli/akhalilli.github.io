@@ -3,7 +3,7 @@ layout: post
 title: Binary Search - survival guide [se1:ch5]
 description: Binary Search - [se1:ch5]
 date: 2021-12-22 18:01:00 +0400
-image: "https://cdn.programiz.com/sites/tutorial2program/files/binary-search-mid.png"
+image: "../images/binary_search/binary_search_1.png"
 tags: [numerical, methods, analysis]
 ---
 
