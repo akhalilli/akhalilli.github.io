@@ -106,6 +106,10 @@ int main()
     return 0;
 } 
 ```
+<p align="center">
+<img align="center" src="../images/bisectch2/root_finding_1.png" alt="root finding">
+<img align="center" src="../images/bisectch2/root_finding_2.png" alt="root finding">
+</p>
 
 Pros & Cons of using the bisection approach:
 
@@ -119,13 +123,5 @@ the interval.
 
 2. If one of the initial guesses is closer to the root, it will take a larger number of
 iterations to reach the root.
-
-
-
-<p align="center">
-<img align="center" src="../images/bisectch2/root_finding.png" alt="root finding">
-</p>
-
-
 
 In the next chapter, we will discuss error analysis.
