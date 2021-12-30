@@ -19,7 +19,7 @@ In general, the Newton-Raphson technique is founded on the idea that if the orig
 Using the definition of the slope(tangent) of a function, at x=xi.
 
 <p align="center">
-<img align="center" width="300" height="300" src="../images/newton_raphson_1.png" alt="numerical analysis">
+<img align="center" width="400" height="400" src="../images/newton_raphson_1.png" alt="numerical analysis">
 </p>
 
 **Algorithm for this method:**
