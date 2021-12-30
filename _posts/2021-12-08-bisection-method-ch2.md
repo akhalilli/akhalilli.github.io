@@ -107,8 +107,8 @@ int main()
 } 
 ```
 <p align="center">
-<img align="center" src="../images/bisectch2/root_finding_1.png" alt="root finding">
-<img align="center" src="../images/bisectch2/root_finding_2.png" alt="root finding">
+<img align="center" width="300" height="300" src="../images/bisectch2/root_finding_1.png" alt="root finding">
+<img align="center" width="300" height="300" src="../images/bisectch2/root_finding_2.png" alt="root finding">
 </p>
 
 Pros & Cons of using the bisection approach:
