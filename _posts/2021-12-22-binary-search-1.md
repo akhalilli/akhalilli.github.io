@@ -26,7 +26,7 @@ As I have stated, Binary Search is one of the “deceptive” algorithms. It’s
 
 In **chapters [6-8]**, we are going through 3 different search space reduction scenarios.
 
-Scenario-1: converge to the 1 element remaining in the search space. It is the most basic and elementary form of Binary Search. It is the standard Binary Search Template that most high schools or universities use when they first teach students computer science.
+**SCENARIO-1:** converge to the 1 element remaining in the search space. It is the most basic and elementary form of Binary Search. It is the standard Binary Search Template that most high schools or universities use when they first teach students computer science.
 
 - Most basic and elementary form of Binary Search
 - Search Condition can be determined without comparing to the element's neighbors (or use specific elements around it)

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Binary Search - survival guide [se1:ch6]
-description: Binary Search - Order Statistics
+description: Binary Search - Space Reduction [continued]
 date: 2021-12-23 18:01:00 +0400
 image: "../images/binary_search/binary_search_2.png"
 tags: [binary, search, binary-search]
@@ -9,36 +9,47 @@ tags: [binary, search, binary-search]
 
 # Binary Search - survival guide [se1:ch6]
 
-Have you ever wondered how computer software determines the square root of a given value?
-
-> "Computational thinking vs. Human thinking" is the equivalent of this question.
-
-Doing the math on paper is different from CPU. By design, computers solve problems iteratively. Innate methods must be adapted in order to deal with such a situation.
-This article's primary goal is to foster intuition:
-1. Understand the requirement for numerical methods
-2. Go through the processes of solving a specific problem (mathematical modeling, solution, and implementation).
-
+As I have stated in **[se1:ch2], [se1:ch5]**, there are different search space reduction scenarios.
 <p align="center">
-<img align="center" src="../images/numerical1.png" alt="numerical analysis">
+<img align="center" src="../images/bisectch2/root_finding_1.png" alt="root finding">
 </p>
 
-Solving engineering challenges necessitates the use of mathematical models. These mathematical models might be generated from actual data or from concepts found in engineering and science. A wide variety of mathematical methods, such as differentiation, nonlinear equations, simultaneous linear equations, curve fitting by interpolation or regression, integration, and differential equations are frequently required when building mathematical models. Some of these mathematical operations can be solved precisely, as you probably learned to do in your calculus studies, but for the most part, they must be approximated numerically. Approximate answers to mathematical problems are provided by numerical methods. These issues might arise in any engineering discipline. As a result, any answer you acquire using these methods will be approximate rather than accurate. However, they provide the solution more quickly than standard approaches and are also simple to program.
-
-**The main applications of numerical methods are:**
-
-- Adaptive computation (we will discuss this topic separately)
-- Solving linear and nonlinear equations and determining the true roots. There are several ways available, such as bisection, Newton-Raphson, and so on.
-- Any value in the range of a table of values may be obtained by using interpolation. It is capable of resolving readings with equal spacing, and Newton's general technique is inferred for ways with uneven spacing.
-- A good estimate and a simple approach are to fit certain points to a curve.
-- On the basis of the assumption that integration can be computed using a simple procedure, the definite integral is the area enclosed by the given curve. These approaches are quite good at estimating the area. There are a variety of techniques, such as Simpson's rule.
-- Solving partial differential equations.
-
-As an engineer or scientist, you will employ numerical methods to address an issue. Let's have a look at an example of this in action. As a starting point, let's take a look at the stages that go into fixing an engineering issue. In order to begin, you must first identify the problem. Defining the problem is the first step in solving it since if you don't know-how, you won't be able to. You need to write a detailed explanation of the issue you're dealing with, including what it is and what we're searching for before you can begin working on it. After that, you may create a mathematical model of it, however, others would say that an experimental model is required. That is perfectly OK. Whatever strategy you use for solving the problem will determine whether you construct a mathematical model or an experimental model. Even an experimental model must require a mathematical model at some point if the problem is to be solved or presented in an understandable manner. Using our numerical methodologies, we will limit the applicability after we've established a mathematical model. If you wish to find a solution, you'll need to work out a mathematical model.
-
+**SCENARIO-2:** This situation is an enhanced version of the Binary Search technique. It is used to search for an element or condition that necessitates accessing the current index in the array as well as the index of its immediate right neighbor in the array. 
 <p align="center">
-<img width="450" height="450" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Bisection_method.svg/1200px-Bisection_method.svg.png" alt="bisection method">
+<img align="center" src="../images/binary_search/binary_search_sc21.png" alt="root finding">
 </p>
-Depending on how you solve the mathematical model, you may utilize analytical methods, numerical methods, or even a package program to accomplish your goal. When students or others think they've finished with a mathematical model, they often mistakenly believe that they've completed their work; this isn't the case for your employer or anybody else. Instead of merely searching for a mathematical answer, they want to know how you plan to put that solution into action so that the problem may be resolved.
 
-For the next chapter, we are diving into the Bisection Analysis & Newton-Raphson Method.
+> One question arises in this context: why is left=mid+1?
+> 
 
+Because we are doing integer division, which index is the most dominant in the final result? Because the integer division ignores the portions after a point, the smaller element always dominates the outcome in all cases. 
+
+> It's as if the left side is equipped with a magnet, which attracts the right side.
+> 
+
+```cpp
+int binarySearch(vector<int>& nums, int target){
+  if(nums.size() == 0)
+    return -1;
+
+  int left = 0, right = nums.size();
+  while(left < right){
+    // Prevent (left + right) overflow
+    int mid = left + (right - left) / 2;
+    if(nums[mid] == target){ return mid; }
+    else if(nums[mid] < target) { left = mid + 1; }
+    else { right = mid; }
+  }
+
+  // Post-processing:
+  // End Condition: left == right
+  if(left != nums.size() && nums[left] == target) return left;
+  return -1;
+}
+```
+
+**The following are the main focuses:** 
+- An advanced method of implementing Binary Search.
+- The Search Condition must have access to the element's immediate right neighbor in order to be effective.
+- Determine if a condition is satisfied by looking at the element's right neighbor and then choosing whether to travel left or right.
+- It is necessary to perform post-processing to ensure that the **Search Space is at least 2** in size at each stage. When you have only one element remaining in the loop/recursion, it is over. It is necessary to determine if the remaining element satisfies the criteria.
