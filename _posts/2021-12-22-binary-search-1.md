@@ -9,36 +9,55 @@ tags: [binary, search, binary-search]
 
 # Binary Search - survival guide [se1:ch5]
 
-Have you ever wondered how computer software determines the square root of a given value?
+From the standpoint of difficulty, binary search is one of the most "deceptive" algorithms available:)
+At first appearance, it appears to be a simple method to build and an approachable algorithm. However, when you look at the specifics, you will notice that the techniques are counter-intuitive, and this will prove to be intimidating in the long run. But there's no reason to be concerned when you know where it comes from. Over the course of chapters [1 to 4], we examined the mathematical foundations of the Binary search, including approximation methods, numerical analysis, search space reduction, and so on.
+There are several terms in computer science for binary search, which is also known as half-interval, logarithmic, or binary chop. Its purpose is to locate the location of an object in an ordered array. An array is compared to its center member when using a binary search. After determining that the target value can't be found in one half, the remaining half is searched again, selecting a middle element from each half and comparing it to the target value until the target value is discovered. An empty half of the array indicates that your target was not found in the search results.
+O(logn) comparisons are made in the worst-case scenario when binary search runs in logarithmic time (for sorted array). The number of entries in an array determines how many comparisons are made.
+Except for tiny arrays, binary search is quicker than linear search. However, in order to use binary search, the array must first be sorted. Specialized data structures like hash tables, which can be searched more quickly than the binary search algorithm, are available. In addition to locating the next-smallest or next-largest element in the array in relation to the target, binary search may also be used to tackle a broader spectrum.
 
-> "Computational thinking vs. Human thinking" is the equivalent of this question.
+As I have stated, Binary Search is one of the “deceptive” algorithms. It’s one of the most buggy implemented algorithms in the world. Therefore, I wanted to show you the idea behind it (where it comes from). As a **bisection method [se1:ch2]**, it’s always convergent. Some historical buggy affections to the world:
 
-Doing the math on paper is different from CPU. By design, computers solve problems iteratively. Innate methods must be adapted in order to deal with such a situation.
-This article's primary goal is to foster intuition:
-1. Understand the requirement for numerical methods
-2. Go through the processes of solving a specific problem (mathematical modeling, solution, and implementation).
+[https://ai.googleblog.com/2006/06/extra-extra-read-all-about-it-nearly.html](https://ai.googleblog.com/2006/06/extra-extra-read-all-about-it-nearly.html)
 
-<p align="center">
-<img align="center" src="../images/numerical1.png" alt="numerical analysis">
-</p>
+[https://dev.to/matheusgomes062/a-bug-was-found-in-java-after-almost-9-years-of-hiding-2d4k](https://dev.to/matheusgomes062/a-bug-was-found-in-java-after-almost-9-years-of-hiding-2d4k)
 
-Solving engineering challenges necessitates the use of mathematical models. These mathematical models might be generated from actual data or from concepts found in engineering and science. A wide variety of mathematical methods, such as differentiation, nonlinear equations, simultaneous linear equations, curve fitting by interpolation or regression, integration, and differential equations are frequently required when building mathematical models. Some of these mathematical operations can be solved precisely, as you probably learned to do in your calculus studies, but for the most part, they must be approximated numerically. Approximate answers to mathematical problems are provided by numerical methods. These issues might arise in any engineering discipline. As a result, any answer you acquire using these methods will be approximate rather than accurate. However, they provide the solution more quickly than standard approaches and are also simple to program.
+> TLDR: There is a limit to the int data type, so when we add two really large numbers, we get an overflow and a negative value, which, when split by two, causes the issue.
+> 
 
-**The main applications of numerical methods are:**
+In **chapters [6-8]**, we are going through 3 different search space reduction scenarios.
 
-- Adaptive computation (we will discuss this topic separately)
-- Solving linear and nonlinear equations and determining the true roots. There are several ways available, such as bisection, Newton-Raphson, and so on.
-- Any value in the range of a table of values may be obtained by using interpolation. It is capable of resolving readings with equal spacing, and Newton's general technique is inferred for ways with uneven spacing.
-- A good estimate and a simple approach are to fit certain points to a curve.
-- On the basis of the assumption that integration can be computed using a simple procedure, the definite integral is the area enclosed by the given curve. These approaches are quite good at estimating the area. There are a variety of techniques, such as Simpson's rule.
-- Solving partial differential equations.
+Scenario-1: converge to the 1 element remaining in the search space. It is the most basic and elementary form of Binary Search. It is the standard Binary Search Template that most high schools or universities use when they first teach students computer science.
 
-As an engineer or scientist, you will employ numerical methods to address an issue. Let's have a look at an example of this in action. As a starting point, let's take a look at the stages that go into fixing an engineering issue. In order to begin, you must first identify the problem. Defining the problem is the first step in solving it since if you don't know-how, you won't be able to. You need to write a detailed explanation of the issue you're dealing with, including what it is and what we're searching for before you can begin working on it. After that, you may create a mathematical model of it, however, others would say that an experimental model is required. That is perfectly OK. Whatever strategy you use for solving the problem will determine whether you construct a mathematical model or an experimental model. Even an experimental model must require a mathematical model at some point if the problem is to be solved or presented in an understandable manner. Using our numerical methodologies, we will limit the applicability after we've established a mathematical model. If you wish to find a solution, you'll need to work out a mathematical model.
+- Most basic and elementary form of Binary Search
+- Search Condition can be determined without comparing to the element's neighbors (or use specific elements around it)
+- No post-processing required because at each step, you are checking to see if the element has been found. If you reach the end, then you know the element is not found
 
 <p align="center">
-<img width="450" height="450" src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Bisection_method.svg/1200px-Bisection_method.svg.png" alt="bisection method">
+<img align="center" src="../images/binary_search/binary_search_sc1.png" alt="binary-search-sc1-iterations">
 </p>
-Depending on how you solve the mathematical model, you may utilize analytical methods, numerical methods, or even a package program to accomplish your goal. When students or others think they've finished with a mathematical model, they often mistakenly believe that they've completed their work; this isn't the case for your employer or anybody else. Instead of merely searching for a mathematical answer, they want to know how you plan to put that solution into action so that the problem may be resolved.
 
-For the next chapter, we are diving into the Bisection Analysis & Newton-Raphson Method.
+```cpp
+int binarySearch(vector<int>& nums, int target){
+  if(nums.size() == 0)
+    return -1;
 
+  int left = 0, right = nums.size() - 1;
+  while(left <= right){
+    // Prevent (left + right) overflow
+    int mid = left + (right - left) / 2;
+    if(nums[mid] == target){ return mid; }
+    else if(nums[mid] < target) { left = mid + 1; }
+    else { right = mid - 1; }
+  }
+
+  // End Condition: left > right
+  return -1;
+}
+```
+
+**Iterations:**
+<p align="center">
+<img align="center" src="../images/binary_search/binary_search_sc2.png" alt="binary-search-sc1-iterations">
+</p>
+
+For the next chapter we are going to discuss other search space scenarios.
