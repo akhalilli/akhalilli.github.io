@@ -2,7 +2,7 @@
 layout: post
 title: Binary Search - survival guide [se1:ch6]
 description: Binary Search - Search Space Reduction [continued]
-date: 2021-12-23 18:01:00 +0400
+date: 2021-11-23 18:01:00 +0400
 image: "../images/binary_search/binary_search_2.png"
 tags: [binary, search, binary-search]
 ---
