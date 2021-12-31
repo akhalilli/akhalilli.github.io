@@ -31,7 +31,7 @@ social:
   - {
       icon: "ion-logo-github",
       label: Github,
-      link: "https://github.com/akhalilli",
+      link: "https://github.com/alikhalilli",
     }
 
 # Example of adding a new link to the author section - {icon: "ion-logo-vimeo", label: Vimeo, link: "https://vimeo.com"}
