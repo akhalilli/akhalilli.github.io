@@ -1,6 +1,16 @@
 [
   
     {
+      "title"    : "Jump Game",
+      "article"  : "<div class='article col col-12 animate'> <div class='article__inner'> <div class='article__content'> <h2 class='article__title'> <a href='/jm-gm'>Jump Game</a> </h2> <p class='article__excerpt'>Jump Game</p><div class='article__bottom'> <div class='article-tags__box'><a href='/tag/dp' class='article__tag'>dp</a><a href='/tag/dynamic-programming' class='article__tag'>dynamic-programming</a><a href='/tag/optimization' class='article__tag'>optimization</a><a href='/tag/recursion' class='article__tag'>recursion</a></div></div></div></div></div>",
+      "category" : "",
+      "tags"     : "dp, dynamic-programming, optimization, and recursion",
+      "url"      : "/jm-gm",
+      "date"     : "2022-06-18 10:00:00 +0400",
+      "content"  : "  Problem: Given an array of non-negative integers nums, you are initially positioned at the first index of the array. Each element in the array represents your maximum jump length at that position. Your goal is to reach the last index in the minimum number of jumps. You can assume that you can always reach the last index.Let’s look at two different approaches:1. Recursive [without memoization]Basically checking for possible range on each element.possible_jumps = { curr + [1..nums[idx]] } Basically, we are checking for all possible options. Range space is: [1..nums[idx]], jump space will be: idx + [1..nums[idx]]def solve(nums):    import math    def recurse(idx):        if idx == len(nums) - 1:            return 0        if idx &amp;gt;= len(nums):            return math.inf # not possible, it is beyond the n&#39;th element        res = math.inf        val = nums[idx] # we will check for all possible jumps, range: [1..nums[idx]] (inclusive)        for v in range(1, val + 1):            res = min(res, 1 + recurse(idx + v))        return res    return recurse(0)2. Dynamic Programming [Bottom Up], Push DPFor DP State Relations, take a look into the following picture: Base state for dp[0] will be 0, because cost of reaching to idx=0 is ZERO. class Solution:    def jump(self, nums: List[int]) -&amp;gt; int:        return self.dpsolve(nums)    def dpsolve(self, nums):        import math        n = len(nums)        dp = [math.inf] * n        dp[0] = 0        for i in range(0, n):            for v in range(1, nums[i]+1):                if i + v &amp;lt; n:                    dp[i+v] = min(dp[i]+1, dp[i+v])        return dp[n-1]"
+    } ,
+  
+    {
       "title"    : "Manacher&#39;s Algorithm",
       "article"  : "<div class='article col col-12 animate'> <div class='article__inner'> <div class='article__content'> <h2 class='article__title'> <a href='/mn-ch'>Manacher&#39;s Algorithm</a> </h2> <p class='article__excerpt'>Longest Palindromic Substring</p><div class='article__bottom'> <div class='article-tags__box'><a href='/tag/string' class='article__tag'>string</a><a href='/tag/palindrome' class='article__tag'>palindrome</a><a href='/tag/longest-palindrome' class='article__tag'>longest-palindrome</a><a href='/tag/manacher's-algorithm' class='article__tag'>manacher's-algorithm</a></div></div></div></div></div>",
       "category" : "",
