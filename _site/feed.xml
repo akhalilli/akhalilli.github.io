@@ -5,9 +5,121 @@
         <description>My perspectives on Computer Science.</description>
         <link>http://localhost:4000/</link>
         <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Sat, 18 Jun 2022 12:44:52 +0400</pubDate>
-        <lastBuildDate>Sat, 18 Jun 2022 12:44:52 +0400</lastBuildDate>
+        <pubDate>Thu, 23 Jun 2022 15:28:48 +0400</pubDate>
+        <lastBuildDate>Thu, 23 Jun 2022 15:28:48 +0400</lastBuildDate>
         <generator>Jekyll v4.2.1</generator>
+        
+            <item>
+                <title>Permutation Sequence</title>
+                <description>&lt;blockquote&gt;
+  &lt;p&gt;Problem: The set [1, 2, 3, …, n] contains a total of n! unique permutations. Given n and k, return the kth permutation sequence.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;This problem is really cool and helpful to gain intuition on permutation problems.
+Both recursive and iterative approaches are actually similar, but I will explain recursive approach, because it’s much more native way for this problem.
+&lt;strong&gt;Core idea here is&lt;/strong&gt;: think the problem recursively as,&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;
+&lt;img align=&quot;center&quot; width=&quot;300&quot; src=&quot;https://assets.leetcode.com/users/images/d348f993-4745-4e74-9d18-d92310a9eff5_1655981576.235183.png&quot; alt=&quot;permutation sequence&quot; /&gt;
+&lt;img align=&quot;center&quot; width=&quot;400&quot; height=&quot;400&quot; src=&quot;https://assets.leetcode.com/users/images/3243d922-7791-45c3-8376-5d2e74e9ebce_1655981374.6659791.png&quot; alt=&quot;permutation sequence&quot; /&gt;
+&lt;/p&gt;
+&lt;p&gt;Proof: Initially for the first index of number, there are n! options. K initially resides in [1…K…N!] range. But for each number, there is block_size. What is this block size? Block size is it’s (for each number) total number of contributions on current index to the permutations.
+Initially there are n numbers available as a choice. For next id there are n-1, for next after next there are n-2 etc.. You can think about that as a pigeon-hole principle. &lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;0. For the 0th state:&lt;/strong&gt; n! is the initial block size [this state is abstact]&lt;br /&gt;
+&lt;strong&gt;1. For the first index:&lt;/strong&gt; prev_block_size / n -&amp;gt; n!/n&lt;br /&gt;
+&lt;strong&gt;2. For the second index:&lt;/strong&gt; prev_block_size / n-1 -&amp;gt; n!/n*(n-1)&lt;br /&gt;
+&lt;strong&gt;3. For the third index:&lt;/strong&gt; prev_block_size/(n-2) -&amp;gt; n! / n * (n-1) * (n-2)&lt;br /&gt;
+…&lt;/p&gt;
+
+&lt;p align=&quot;center&quot;&gt;
+&lt;img align=&quot;center&quot; width=&quot;700&quot; src=&quot;https://assets.leetcode.com/users/images/7dc60874-f93d-4ead-8269-d25d85242c81_1655981703.6124957.png&quot; alt=&quot;permutation sequence&quot; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;To find k, n, block_size for the next recursive state?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;new k will be k % curr_block_size (you can clearly see it from the pictures above). new k for the next recursive part will reside within borders of the previous block.&lt;/li&gt;
+  &lt;li&gt;next n will be, n-1. will also delete n from the selection space.&lt;/li&gt;
+  &lt;li&gt;new block_size will be, previous_block_size / new_space&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;Solution&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;getPermutation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;int&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;solve&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;solve&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+        &lt;span class=&quot;s&quot;&gt;&apos;&apos;&apos;
+            123
+            132
+
+            213
+            231
+
+            312
+            321
+
+            how many permutations?
+            n * (n-1) * (n-2) [main range]
+
+            main range: 1...n!
+            main blocksize: n!//n (for example: 3 numbers, 3! permutations, 3!//3 block size)
+            main formula: block_size * numbers = permutationsize
+
+            second range: 1...(n-1)!
+            second blocksize:
+            second formula: block_size * (n-1) = (n-1)!
+
+
+            K ?
+
+            1.... K .... n!
+
+            (k // block_size + 1) -&amp;gt; number
+            k % block_size -&amp;gt; new_k (for remaining partition)
+            initial_block_size = n!
+
+            [2,3,1]
+
+        &apos;&apos;&apos;&lt;/span&gt;
+        &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;math&lt;/span&gt;
+
+        &lt;span class=&quot;n&quot;&gt;nums&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;i&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;range&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;+&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)]&lt;/span&gt;
+
+        &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;recurse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;block_size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+                &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;res&lt;/span&gt;
+
+            &lt;span class=&quot;n&quot;&gt;block_size&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;block_size&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;numidx&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;k&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;//&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;block_size&lt;/span&gt;
+            &lt;span class=&quot;n&quot;&gt;res&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+=&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;str&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;nums&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;numidx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;del&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nums&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;numidx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;recurse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;k&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;%&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;block_size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;block_size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;recurse&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;k&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;math&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;factorial&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;n&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&apos;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Further Research&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Make research about the factorial number system&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p align=&quot;center&quot;&gt;
+&lt;img align=&quot;center&quot; src=&quot;https://leetcode.com/problems/permutation-sequence/Figures/60/index.png&quot; /&gt;
+&lt;/p&gt;
+</description>
+                <pubDate>Thu, 23 Jun 2022 10:00:00 +0400</pubDate>
+                <link>http://localhost:4000/pm-sq</link>
+                <guid isPermaLink="true">http://localhost:4000/pm-sq</guid>
+                
+                <category>permutation</category>
+                
+                <category>recursion</category>
+                
+                
+            </item>
         
             <item>
                 <title>Jump Game</title>
@@ -48,8 +160,6 @@ Range space is: &lt;strong&gt;[1..nums[idx]]&lt;/strong&gt;, jump space will be:
 &lt;p align=&quot;center&quot;&gt;
 &lt;img align=&quot;center&quot; width=&quot;600&quot; src=&quot;https://assets.leetcode.com/users/images/4b424a5c-fea0-4485-b4db-92f0c62b427e_1655502303.8311636.png&quot; /&gt;
 &lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;strong&gt;For DP State Relations, take a look into the following picture:&lt;/strong&gt; &lt;br /&gt;
 Base state for dp[0] will be 0, because cost of reaching to idx=0 is ZERO. &lt;br /&gt;&lt;/p&gt;
@@ -1081,63 +1191,6 @@ iterations to reach the root.&lt;/p&gt;
                 <category>analysis</category>
                 
                 <category>bisection</category>
-                
-                
-            </item>
-        
-            <item>
-                <title>Numerical Methods - need [se1:ch1]</title>
-                <description>&lt;h1 id=&quot;numerical-methods---need-se1ch1&quot;&gt;Numerical Methods - need [se1:ch1]&lt;/h1&gt;
-
-&lt;p&gt;Have you ever wondered how computer software determines the square root of a given value?&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;“Computational thinking vs. Human thinking” is the equivalent of this question.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;Doing the math on paper is different from CPU. By design, computers solve problems iteratively. Innate methods must be adapted in order to deal with such a situation.
-This article’s primary goal is to foster intuition:&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Understand the requirement for numerical methods&lt;/li&gt;
-  &lt;li&gt;Go through the processes of solving a specific problem (mathematical modeling, solution, and implementation).&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p align=&quot;center&quot;&gt;
-&lt;img align=&quot;center&quot; src=&quot;../images/numerical1.png&quot; alt=&quot;numerical analysis&quot; /&gt;
-&lt;/p&gt;
-
-&lt;p&gt;Solving engineering challenges necessitates the use of mathematical models. These mathematical models might be generated from actual data or from concepts found in engineering and science. A wide variety of mathematical methods, such as differentiation, nonlinear equations, simultaneous linear equations, curve fitting by interpolation or regression, integration, and differential equations are frequently required when building mathematical models. Some of these mathematical operations can be solved precisely, as you probably learned to do in your calculus studies, but for the most part, they must be approximated numerically. Approximate answers to mathematical problems are provided by numerical methods. These issues might arise in any engineering discipline. As a result, any answer you acquire using these methods will be approximate rather than accurate. However, they provide the solution more quickly than standard approaches and are also simple to program.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;The main applications of numerical methods are:&lt;/strong&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Adaptive computation (we will discuss this topic separately)&lt;/li&gt;
-  &lt;li&gt;Solving linear and nonlinear equations and determining the true roots. There are several ways available, such as bisection, Newton-Raphson, and so on.&lt;/li&gt;
-  &lt;li&gt;Any value in the range of a table of values may be obtained by using interpolation. It is capable of resolving readings with equal spacing, and Newton’s general technique is inferred for ways with uneven spacing.&lt;/li&gt;
-  &lt;li&gt;A good estimate and a simple approach are to fit certain points to a curve.&lt;/li&gt;
-  &lt;li&gt;On the basis of the assumption that integration can be computed using a simple procedure, the definite integral is the area enclosed by the given curve. These approaches are quite good at estimating the area. There are a variety of techniques, such as Simpson’s rule.&lt;/li&gt;
-  &lt;li&gt;Solving partial differential equations.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;As an engineer or scientist, you will employ numerical methods to address an issue. Let’s have a look at an example of this in action. As a starting point, let’s take a look at the stages that go into fixing an engineering issue. In order to begin, you must first identify the problem. Defining the problem is the first step in solving it since if you don’t know-how, you won’t be able to. You need to write a detailed explanation of the issue you’re dealing with, including what it is and what we’re searching for before you can begin working on it. After that, you may create a mathematical model of it, however, others would say that an experimental model is required. That is perfectly OK. Whatever strategy you use for solving the problem will determine whether you construct a mathematical model or an experimental model. Even an experimental model must require a mathematical model at some point if the problem is to be solved or presented in an understandable manner. Using our numerical methodologies, we will limit the applicability after we’ve established a mathematical model. If you wish to find a solution, you’ll need to work out a mathematical model.&lt;/p&gt;
-
-&lt;p align=&quot;center&quot;&gt;
-&lt;img width=&quot;450&quot; height=&quot;450&quot; src=&quot;https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Bisection_method.svg/1200px-Bisection_method.svg.png&quot; alt=&quot;bisection method&quot; /&gt;
-&lt;/p&gt;
-&lt;p&gt;Depending on how you solve the mathematical model, you may utilize analytical methods, numerical methods, or even a package program to accomplish your goal. When students or others think they’ve finished with a mathematical model, they often mistakenly believe that they’ve completed their work; this isn’t the case for your employer or anybody else. Instead of merely searching for a mathematical answer, they want to know how you plan to put that solution into action so that the problem may be resolved.&lt;/p&gt;
-
-&lt;p&gt;For the next chapter, we are diving into the Bisection Analysis &amp;amp; Newton-Raphson Method.&lt;/p&gt;
-</description>
-                <pubDate>Wed, 01 Dec 2021 15:01:35 +0400</pubDate>
-                <link>http://localhost:4000/numerical-methods-intro</link>
-                <guid isPermaLink="true">http://localhost:4000/numerical-methods-intro</guid>
-                
-                <category>numerical</category>
-                
-                <category>methods</category>
-                
-                <category>analysis</category>
                 
                 
             </item>
