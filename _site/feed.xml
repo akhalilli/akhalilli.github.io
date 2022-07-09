@@ -5,8 +5,8 @@
         <description>My perspectives on Computer Science.</description>
         <link>http://localhost:4000/</link>
         <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Sat, 09 Jul 2022 23:06:37 +0400</pubDate>
-        <lastBuildDate>Sat, 09 Jul 2022 23:06:37 +0400</lastBuildDate>
+        <pubDate>Sat, 09 Jul 2022 23:07:03 +0400</pubDate>
+        <lastBuildDate>Sat, 09 Jul 2022 23:07:03 +0400</lastBuildDate>
         <generator>Jekyll v4.2.1</generator>
         
             <item>
@@ -219,6 +219,7 @@ when remove &amp;amp; add height to heap(or other data structures): - check for 
   &lt;li&gt;Try to implement by using 1D Fenwick Tree&lt;/li&gt;
   &lt;li&gt;Try to implement by using Segment Tree&lt;/li&gt;
   &lt;li&gt;Try to implement by using 2D Fenwick Tree&lt;/li&gt;
+  &lt;li&gt;Can we propose a generalized solution to merge 3D intervals?&lt;/li&gt;
 &lt;/ul&gt;
 </description>
                 <pubDate>Sat, 09 Jul 2022 10:00:00 +0400</pubDate>
