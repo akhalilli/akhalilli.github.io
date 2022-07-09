@@ -5,8 +5,8 @@
         <description>My perspectives on Computer Science.</description>
         <link>http://localhost:4000/</link>
         <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Sat, 09 Jul 2022 23:19:16 +0400</pubDate>
-        <lastBuildDate>Sat, 09 Jul 2022 23:19:16 +0400</lastBuildDate>
+        <pubDate>Sat, 09 Jul 2022 23:20:29 +0400</pubDate>
+        <lastBuildDate>Sat, 09 Jul 2022 23:20:29 +0400</lastBuildDate>
         <generator>Jekyll v4.2.1</generator>
         
             <item>
@@ -119,7 +119,7 @@ when remove &amp;amp; add height to heap(or other data structures): - check for 
   &lt;li&gt;if e1==e2, remove e1 first, then e2 &lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;strong&gt;Implementation v1 (Tushar’s idea):&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Implementation v1:&lt;/strong&gt;&lt;/p&gt;
 
 &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;solveV1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;bp&quot;&gt;self&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;buildings&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
 	&lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;heapq&lt;/span&gt;
@@ -155,7 +155,7 @@ when remove &amp;amp; add height to heap(or other data structures): - check for 
 	&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:]&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;What are the critical points for us?&lt;/p&gt;
+&lt;p&gt;What are the critical points for us? &lt;br /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Critical points are start and end points alongside oX axis. But they can have different conjunction cases. These different conjunctions and their behaviors are as followings:&lt;/li&gt;
@@ -165,7 +165,7 @@ when remove &amp;amp; add height to heap(or other data structures): - check for 
 &lt;img align=&quot;center&quot; width=&quot;700&quot; src=&quot;https://i.ibb.co/64FtLxR/conjunction-points.png&quot; alt=&quot;conjunctions all cases&quot; /&gt;
 &lt;/p&gt;
 
-&lt;p&gt;Let’s see all different edge cases:
+&lt;p&gt;Let’s see all different edge cases: &lt;br /&gt;
 &lt;strong&gt;Case#1 (s2&amp;gt;s1, e2&amp;gt;e1):&lt;/strong&gt;&lt;br /&gt;&lt;/p&gt;
 
 &lt;p align=&quot;center&quot;&gt;
