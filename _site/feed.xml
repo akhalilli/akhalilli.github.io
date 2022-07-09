@@ -5,8 +5,8 @@
         <description>My perspectives on Computer Science.</description>
         <link>http://localhost:4000/</link>
         <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Sat, 09 Jul 2022 23:07:03 +0400</pubDate>
-        <lastBuildDate>Sat, 09 Jul 2022 23:07:03 +0400</lastBuildDate>
+        <pubDate>Sat, 09 Jul 2022 23:16:42 +0400</pubDate>
+        <lastBuildDate>Sat, 09 Jul 2022 23:16:42 +0400</lastBuildDate>
         <generator>Jekyll v4.2.1</generator>
         
             <item>
@@ -31,7 +31,7 @@ Article might be challenging to digest at the first attempt, therefore divided i
 What is the input data? Input data is: &lt;strong&gt;(startX, endX, height)&lt;/strong&gt;, actually we can express height as endY-startY, startY is always &lt;strong&gt;ZERO&lt;/strong&gt;, so we can write endY as height. &lt;br /&gt;
 &lt;strong&gt;Input data: (startX, endX, height)&lt;/strong&gt;
 Can we combine them into the 1D data structure? Let’s try.
-For every cell between [startX and endX) map OY data into OX data. We can call it &lt;strong&gt;heightmap&lt;/strong&gt;.
+For every cell between [startX and endX) map OY data into OX data. We can call it &lt;strong&gt;heightmap&lt;/strong&gt;.&lt;br /&gt;
 &lt;strong&gt;map[startX] = y1
 map[x2] = y1
 map[x..] = y1
