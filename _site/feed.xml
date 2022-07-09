@@ -5,8 +5,8 @@
         <description>My perspectives on Computer Science.</description>
         <link>http://localhost:4000/</link>
         <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Sat, 09 Jul 2022 23:17:55 +0400</pubDate>
-        <lastBuildDate>Sat, 09 Jul 2022 23:17:55 +0400</lastBuildDate>
+        <pubDate>Sat, 09 Jul 2022 23:19:16 +0400</pubDate>
+        <lastBuildDate>Sat, 09 Jul 2022 23:19:16 +0400</lastBuildDate>
         <generator>Jekyll v4.2.1</generator>
         
             <item>
@@ -78,7 +78,7 @@ It will look like as following:&lt;br /&gt;&lt;/p&gt;
 &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;p&gt;Can we optimize the running time? To optimize the problem, we need to track repetitive patterns in implementation. What can be redundant computation in our previous implementation?
+&lt;p&gt;Can we optimize the running time? To optimize the problem, we need to track repetitive patterns in implementation. What can be redundant computation in our previous implementation?&lt;br /&gt;
 &lt;strong&gt;for each start and end coordinates we repeated finding tallest rectangle - this is the key point.&lt;/strong&gt;
 Because the intervals alongside oX axis, can be in following states:&lt;/p&gt;
 
@@ -102,12 +102,21 @@ Idea is as following:
 Core intuition behind this problem is:
 when remove &amp;amp; add height to heap(or other data structures): - check for previous has changed? - YES -&amp;gt; append to result - NO -&amp;gt; do nothing&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;Algorithm:&lt;/strong&gt; - sort start and end points according to this rule (for sequentially maintaining max height): - for end points -&amp;gt; if e1==e2, sort heights from smaller to higher - for start points -&amp;gt; if s1==s2, sort from higher to smaller - identify the coordinate type? start or end - if the coordinate type is start: add to heap (or other ds) and check if max has changed - if the coordinate type is end: remove from heap (or other ds) and check if max has changed - if the max has changed: add it to ans [x, h] - if the max has not changed: do nothing&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Algorithm:&lt;/strong&gt; &lt;br /&gt;&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;if s1==s2, add it which one is higher&lt;/li&gt;
-  &lt;li&gt;if e1==s2, add s2 first, then remove e2&lt;/li&gt;
-  &lt;li&gt;if e1==e2, remove e1 first, then e2&lt;/li&gt;
+  &lt;li&gt;sort start and end points according to this rule (for sequentially maintaining max height): &lt;br /&gt;&lt;/li&gt;
+  &lt;li&gt;for end points -&amp;gt; if e1==e2, sort heights from smaller to higher &lt;br /&gt;&lt;/li&gt;
+  &lt;li&gt;for start points -&amp;gt; if s1==s2, sort from higher to smaller &lt;br /&gt;&lt;/li&gt;
+  &lt;li&gt;identify the coordinate type? start or end &lt;br /&gt;&lt;/li&gt;
+  &lt;li&gt;if the coordinate type is start: add to heap (or other ds) and check if max has changed &lt;br /&gt;&lt;/li&gt;
+  &lt;li&gt;if the coordinate type is end: remove from heap (or other ds) and check if max has changed - if the max has changed: add it to ans [x, h] &lt;br /&gt;&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;if the max has not changed: do nothing &lt;br /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;if s1==s2, add it which one is higher &lt;br /&gt;&lt;/li&gt;
+  &lt;li&gt;if e1==s2, add s2 first, then remove e2 &lt;br /&gt;&lt;/li&gt;
+  &lt;li&gt;if e1==e2, remove e1 first, then e2 &lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;&lt;strong&gt;Implementation v1 (Tushar’s idea):&lt;/strong&gt;&lt;/p&gt;
