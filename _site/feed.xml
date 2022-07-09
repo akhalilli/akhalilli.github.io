@@ -5,8 +5,8 @@
         <description>My perspectives on Computer Science.</description>
         <link>http://localhost:4000/</link>
         <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-        <pubDate>Sat, 09 Jul 2022 23:16:42 +0400</pubDate>
-        <lastBuildDate>Sat, 09 Jul 2022 23:16:42 +0400</lastBuildDate>
+        <pubDate>Sat, 09 Jul 2022 23:17:55 +0400</pubDate>
+        <lastBuildDate>Sat, 09 Jul 2022 23:17:55 +0400</lastBuildDate>
         <generator>Jekyll v4.2.1</generator>
         
             <item>
@@ -32,17 +32,17 @@ What is the input data? Input data is: &lt;strong&gt;(startX, endX, height)&lt;/
 &lt;strong&gt;Input data: (startX, endX, height)&lt;/strong&gt;
 Can we combine them into the 1D data structure? Let’s try.
 For every cell between [startX and endX) map OY data into OX data. We can call it &lt;strong&gt;heightmap&lt;/strong&gt;.&lt;br /&gt;
-&lt;strong&gt;map[startX] = y1
-map[x2] = y1
-map[x..] = y1
-map[endX-1] = y1&lt;/strong&gt;
-It will look like as following:&lt;/p&gt;
+&lt;strong&gt;map[startX] = y1 &lt;br /&gt;
+map[x2] = y1 &lt;br /&gt;
+map[x..] = y1 &lt;br /&gt;
+map[endX-1] = y1&lt;/strong&gt; &lt;br /&gt;
+It will look like as following:&lt;br /&gt;&lt;/p&gt;
 
 &lt;p align=&quot;center&quot;&gt;
 &lt;img align=&quot;center&quot; width=&quot;600&quot; src=&quot;https://i.ibb.co/JHD8gKf/cover.png&quot; alt=&quot;skyline problem&quot; /&gt;
 &lt;/p&gt;
 
-&lt;p&gt;Let’s take a closer look into the implementation:&lt;/p&gt;
+&lt;p&gt;Let’s take a closer look into the implementation: &lt;br /&gt;&lt;/p&gt;
 
 &lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;Pseudo&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;-&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;code&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;each&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rectangle&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;in&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;rectangles&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
